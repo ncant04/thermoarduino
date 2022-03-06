@@ -40,7 +40,7 @@ SLAVE -   receives command sent from the "MASTER" board, reads value of temperat
 Further images of the assembled circuit and of its schematic are shown below:
 
 ![alt text](bb.svg)
-![alt text](Schematic.png)
+![alt text](schematic.png)
   
 <!-- LICENSE -->
 ## License
