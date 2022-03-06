@@ -15,12 +15,11 @@ sensor.
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-    </li>
     <li>
+      <a href="#license">License</a>
+    <li>
+      <a href="#contact">Contact</a>
     </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -55,7 +54,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Nico - Mars-explorer@protonmail.com
+"Nico" - Mars-explorer@protonmail.com
 
 Project Link: [https://github.com/ncant04/thermoarduino.git](https://github.com/ncant04/thermoarduino.git)
 
