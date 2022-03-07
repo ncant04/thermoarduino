@@ -54,7 +54,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-"Nico" - Mars-explorer@protonmail.com
+"Nico" - ncant04@aol.com
 
 Project Link: [https://github.com/ncant04/thermoarduino.git](https://github.com/ncant04/thermoarduino.git)
 
