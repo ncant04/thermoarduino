@@ -1,37 +1,35 @@
-/********************************************************************
-
-   thermoarduino/master.ino
-
-   Sends command to "slave" board, receives sensor data from it,
-   manages I/O lines and user interaction.
-
-   Copyright (c) Nicolò Cantori. All rights reserved.
-   Licensed under the MIT License.
-
-********************************************************************/
+/*
+ * master.ino
+ *
+ * Copyright (c) 2022 Nicolò Cantori.
+ * SPDX-License-Identifier: MIT
+ */
 
 #include <LiquidCrystal.h>
 
-// Define output pins for LCD.
-#define rs  2
-#define e   3
-#define d4  4
-#define d5  5
-#define d6  6
-#define d7  7
+// ** LCD pins **
 
-// push-button
-#define sw  8
+#define RS  2
+#define E   3
+#define D4  4
+#define D5  5
+#define D6  6
+#define D7  7
 
-LiquidCrystal lcd(rs,
-                e,
-                d4, d5, d6, d7);    // LCD data lines
+//---------------
+
+#define SW  8  // Push-button
+
+LiquidCrystal lcd(RS, E, D4, D5, D6, D7);
 
 int pushbutton, n;
 float Vin, temp;
 String data = "";
 
-void setup() {
+void PrintTemp(const float);
+
+void setup()
+{
     Serial.begin(9600);
     pinMode(sw, INPUT);
 
@@ -43,14 +41,16 @@ void setup() {
     lcd.setCursor(0, 0);
 }
 
-void loop() {
-    pushbutton = digitalRead(sw);
+
+void loop()
+{
+    pushbutton = digitalRead(SW);
     
-    while(pushbutton == 0)
-        pushbutton = digitalRead(sw);
+    while(!pushbutton)
+        pushbutton = digitalRead(SW);
     
-    while(pushbutton == 1)
-        pushbutton = digitalRead(sw);
+    while(pushbutton)
+        pushbutton = digitalRead(SW);
 
     Serial.print('R');
         delay(250);
@@ -66,20 +66,28 @@ void loop() {
 
     while (Serial.available() > 0)
         data += (char)Serial.read();
-
-    // We need to convert the string into a decimal value.
-    n = data.toInt();
+   
+    n = data.toInt();   // Convert string to decimal value.
     Serial.flush();
     
     Vin = n * 0.00488;
 
     // For the LM35, we have to multiply the previous value by 100.
-    temp = Vin * 100; 
-
-    lcd.clear();
-    lcd.print("Temp: "); lcd.print(temp); lcd.print(char(223)); lcd.print("C");
+    temp = Vin * 100;
     
+    PrintTemp(temp);
+   
     data = "";
     delay(5000);
     lcd.clear();
+}
+
+
+void PrintTemp(const float nTemp)
+{
+    lcd.clear();
+    lcd.print("Temp: ");
+    lcd.print(nTemp);
+    lcd.print(char(223));
+    lcd.print("C");
 }
