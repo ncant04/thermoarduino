@@ -71,8 +71,9 @@ void loop()
     Serial.flush();
     
     Vin = n * 0.00488;
-
-    // For the LM35, we have to multiply the previous value by 100.
+    
+    // The LM35 temperature sensor has a linear + 10-mV/°C scale factor.
+    
     temp = Vin * 100;
     
     PrintTemp(temp);
@@ -83,11 +84,11 @@ void loop()
 }
 
 
-void PrintTemp(const float nTemp)
+void PrintTemp(const float fpTemp)
 {
     lcd.clear();
     lcd.print("Temp: ");
-    lcd.print(nTemp);
+    lcd.print(fpTemp);
     lcd.print(char(223));
     lcd.print("C");
 }
