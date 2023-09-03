@@ -16,8 +16,6 @@
 #define D6  6
 #define D7  7
 
-//---------------
-
 #define SW  8  // Push-button
 
 LiquidCrystal lcd(RS, E, D4, D5, D6, D7);
